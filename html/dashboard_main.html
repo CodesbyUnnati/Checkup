@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords"
-        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 4 admin, bootstrap 4, css3 dashboard, bootstrap 4 dashboard, AdminWrap lite admin bootstrap 4 dashboard, frontend, responsive bootstrap 4 admin template, Elegant admin lite design, Elegant admin lite dashboard bootstrap 4 dashboard template">
+    <meta name="keywords" content="">
     <meta name="description">
     <meta name="robots" content="noindex,nofollow">
     <title>Dashboard</title>
@@ -74,8 +73,8 @@
             opacity: 0;
             visibility: hidden;
             padding: 10px 0;
-            background: #fff;
-            box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+            background: #fff !important;
+            box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25) !important;
             transition: ease all 0.3s;
         }
 
@@ -196,7 +195,7 @@
         .mobile-nav a:hover,
         .mobile-nav .active>a,
         .mobile-nav li:hover>a {
-            color: #fa023c;
+            color: #2AB5E8;
             text-decoration: none;
         }
 
@@ -251,76 +250,61 @@
             color: #fff;
         }
     </style>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center">
+        <div class="container d-flex align-items-center">
+            <div class="logo mr-auto">
+                <h1>
+                    <!-- <img src="assets/img/Icon.png" style="margin-top: -10px;"> -->
+                    <img src="../assets/img/Icon.png" style="margin-top: -15px;" alt="">
+                    <a href="index.html"><img src="assets/img/Elektra_Logo.png" style="margin-top: -10px;" alt=""></a>
+                </h1>
+            </div>
 
-    <!-- ============================================================== -->
-    <!-- Main wrapper - style you can find in pages.scss -->
-    <!-- ============================================================== -->
-    <div id="main-wrapper">
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
-        
-        <!-- ======= Header ======= -->
-        <header id="header" class="fixed-top d-flex align-items-center">
-            <div class="container d-flex align-items-center">
-                <div class="logo mr-auto">
-                    <h1>
-                        <!-- <img src="assets/img/Icon.png" style="margin-top: -10px;"> -->
-                        <img src="../assets/img/Icon.png" style="margin-top: -15px;" alt="">
-                        <a href="index.html"><img src="assets/img/Elektra_Logo.png" style="margin-top: -10px;"
-                                alt=""></a>
-                    </h1>
-                </div>
+            <!--NAVBAR-->
 
-                <!--NAVBAR-->
-
-                <nav class="nav-menu d-none d-lg-block ml-auto">
-                    <ul>
-                        <li class="active"><a href="../index.html">Home</a></li>
-                        <li><a href="../index.html">About Us</a></li>
-                        <li><a href="../index.html">Cases</a></li>
-                        <li><a href="../index.html">Articles</a></li>
-                        <li><a href="html/dashboard_main.html">DashBoard</a></li>
-                        <li style=" font-weight: 100;
+            <nav class="nav-menu d-none d-lg-block ml-auto">
+                <ul>
+                    <li class="active"><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html">About Us</a></li>
+                    <li><a href="../index.html">Cases</a></li>
+                    <li><a href="../index.html">Articles</a></li>
+                    <li><a href="html/dashboard_main.html">DashBoard</a></li>
+                    <li style=" font-weight: 100;
                 font-size: 10px;
                 display: inline-block;
-                padding: 1px 1px 1px 1px;
-                border-radius: 50px;
+                
+                border-radius: 10px;
                 transition: 0.5s;
                 background: #ddd;
+                margin: 5px;
                 border-style: none;
             "><a href="form.html">Doctor</a></li>&nbsp;&nbsp;
-                        <li style=" font-weight: 100;
+                    <li style=" font-weight: 100;
                 font-size: 10px;
                 display: inline-block;
-                padding: 1px 1px 1px 1px;
-                border-radius: 50px;
+               
+                border-radius: 10px;
+                margin: 5px;
                 transition: 0.5s;
                 background: #ddd;
                 border-style: none;
             "><a href="form.html">Patient</a></li>
 
-                    </ul>
-                </nav>
+                </ul>
+            </nav>
 
-                <!-- NAVBAR -->
-            </div>
-        </header>
+            <!-- NAVBAR -->
+        </div>
+    </header>
 
-        <!-- End Header -->
-        <!-- ============================================================== -->
-        <!-- End Topbar header -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
+    <!-- End Header -->
 
-        <!-- ============================================================== -->
-        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page wrapper  -->
-        <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+
         <div class="page-wrapper">
             <!-- ============================================================== -->
             <!-- Container fluid  -->
@@ -337,9 +321,12 @@
                         <div class="d-flex justify-content-end align-items-center">
                             <ol class="breadcrumb">
 
-                                <a href="../Symptoms.html">
-                                    <li class="breadcrumb-item active" style="font-size: 1rem;">Check Symptoms</li>
-                                </a>
+                                <a class="btn btn-success d-none d-lg-block m-r-10" href="../Appointment.html">Call
+                                    Doctor</a>
+
+                                <a class="btn btn-success d-none d-lg-block m-r-6" href="../Symptoms.html">Check
+                                    Symptoms</a>
+
                             </ol>
                             <a class="btn btn-success d-none d-lg-block m-l-15" href="../Appointment.html">Doctor's
                                 Report</a>
@@ -391,16 +378,16 @@
                                     <div class="sl-item">
                                         <div class="sl-left bg-success"> <i class="fa fa-user"></i></div>
                                         <div class="sl-right">
-                                            <div class="font-medium">Meeting today <span class="sl-date"> 5pm</span>
+                                            <div class="font-medium">Mr. Harry <span class="sl-date"> 5pm</span>
                                             </div>
-                                            <div class="desc">you can write anything </div>
+                                            <div class="desc">Follow up </div>
                                         </div>
                                     </div>
                                     <div class="sl-item">
                                         <div class="sl-left bg-info"><i class="fa fa-image"></i></div>
                                         <div class="sl-right">
-                                            <div class="font-medium">Send documents to Dr. Clark</div>
-                                            <div class="desc">Lorem Ipsum is simply </div>
+                                            <div class="font-medium">Dr. Clark</div>
+                                            <div class="desc">Send documents to him. </div>
                                         </div>
                                     </div>
                                     <div class="sl-item">
@@ -415,16 +402,16 @@
                                         <div class="sl-left"> <img class="img-circle" alt="user"
                                                 src="../assets/images/users/2.jpg"> </div>
                                         <div class="sl-right">
-                                            <div class="font-medium">Go to the Doctor <span class="sl-date">5 minutes
+                                            <div class="font-medium">Dr. Pots <span class="sl-date">5 minutes
                                                     ago</span></div>
-                                            <div class="desc">Contrary to popular belief</div>
+                                            <div class="desc">Go to collect medicines.</div>
                                         </div>
                                     </div>
                                     <div class="sl-item">
                                         <div class="sl-left"> <img class="img-circle" alt="user"
                                                 src="../assets/images/users/3.jpg"> </div>
                                         <div class="sl-right">
-                                            <div><a href="#">Tiger Sroff</a> <span class="sl-date">5 minutes ago</span>
+                                            <div><a href="#">Tiger</a> <span class="sl-date">5 minutes ago</span>
                                             </div>
                                             <div class="desc">Approve CT Scan
                                                 <br><a href="javascript:void(0)"
@@ -476,31 +463,31 @@
                                             <td class="text-center">1</td>
                                             <td class="txt-oflo">Dr. Clark</td>
                                             <td class="txt-oflo">April 18, 2019</td>
-                                            <td><span class="text-success">$24</span></td>
+                                            <td><span class="text-success">Rs.2400</span></td>
                                         </tr>
                                         <tr>
                                             <td class="text-center">2</td>
                                             <td class="txt-oflo">Dr. Susan</td>
                                             <td class="txt-oflo">April 19, 2019</td>
-                                            <td><span class="text-info">$1250</span></td>
+                                            <td><span class="text-info">Rs.1250</span></td>
                                         </tr>
                                         <tr>
                                             <td class="text-center">3</td>
                                             <td class="txt-oflo">Dr. Ample</td>
                                             <td class="txt-oflo">April 19, 2020</td>
-                                            <td><span class="text-info">$1250</span></td>
+                                            <td><span class="text-info">Rs.1250</span></td>
                                         </tr>
                                         <tr>
                                             <td class="text-center">4</td>
                                             <td class="txt-oflo">Dr. Cassy</td>
                                             <td class="txt-oflo">April 20, 2020</td>
-                                            <td><span class="text-danger">-$24</span></td>
+                                            <td><span class="text-success">Rs2004</span></td>
                                         </tr>
                                         <tr>
                                             <td class="text-center">5</td>
                                             <td class="txt-oflo">Dr. Hostin</td>
                                             <td class="txt-oflo">April 21, 2020</td>
-                                            <td><span class="text-success">$24</span></td>
+                                            <td><span class="text-success">Rs.1204</span></td>
                                         </tr>
 
                                     </tbody>
@@ -560,9 +547,8 @@
                                                     class="img-circle"> <span
                                                     class="profile-status online pull-right"></span> </div>
                                             <div class="mail-contnet">
-                                                <h5>Dr. Ray</h5> <span class="mail-desc">Lorem Ipsum is simply dummy
-                                                    text of the printing and type setting industry. Lorem Ipsum has
-                                                    been.</span> <span class="time">9:30 AM</span>
+                                                <h5>Dr. Ray</h5> <span class="mail-desc">Long time no see.</span> <span
+                                                    class="time">9:30 AM</span>
                                             </div>
                                         </a>
                                         <!-- Message -->
@@ -582,8 +568,8 @@
                                             <div class="user-img"> <span class="round">A</span> <span
                                                     class="profile-status away pull-right"></span> </div>
                                             <div class="mail-contnet">
-                                                <h5>Mr. Gill</h5> <span class="mail-desc">Simply dummy text of the
-                                                    printing and typesetting industry.</span> <span class="time">9:08
+                                                <h5>Mr. Gill</h5> <span class="mail-desc">Meet me at the clinic.</span>
+                                                <span class="time">9:08
                                                     AM</span>
                                             </div>
                                         </a>
@@ -610,20 +596,9 @@
             <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
 
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
     </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
+
     <!-- All Jquery -->
     <!-- ============================================================== -->
     <script src="../assets/node_modules/jquery/jquery-3.2.1.min.js"></script>
