@@ -14,7 +14,7 @@
 <h1>LINKS</h1>
 <li><a href="http://pp0.xyz/htb-drive">Drive</a></li>
 <li><a href="http://pp0.xyz/htb-ppt">PPT</a></li>
-<li><a href="http://pp0.xyz/htb-video">Video></a></li>
+<li><a href="http://pp0.xyz/htb-video">Video</a></li>
 
 <h1>Features</h1>
 
@@ -37,5 +37,5 @@
 <h1>Deployment</h1>✔️GITHUB
 
 <h1>Created and Deployed by</h1>
-  <b>Unnati Mishra🙎 & Devangi Purkhayast</b>
+  <b>Unnati Mishra🙎 & Devangi Purkhayastha</b>
   <br><br>
