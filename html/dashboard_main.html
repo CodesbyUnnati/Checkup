@@ -24,9 +24,233 @@
     <!-- Dashboard 1 Page CSS -->
     <link href="dist/css/pages/dashboard1.css" rel="stylesheet">
 
+
 </head>
 
 <body class="skin-default-dark fixed-layout">
+
+    <style>
+        /*--------------------------------------------------------------
+        # Navigation Menu
+        --------------------------------------------------------------*/
+        /* Desktop Navigation */
+        .nav-menu,
+        .nav-menu * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-menu>ul>li {
+            position: relative;
+            white-space: nowrap;
+            float: left;
+        }
+
+        .nav-menu a {
+            display: block;
+            position: relative;
+            color: #4f5a62;
+            padding: 12px 15px;
+            transition: 0.3s;
+            font-size: 16px;
+            font-weight: 500;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu .active>a,
+        .nav-menu li:hover>a {
+            color: #2AB5E8;
+            text-decoration: none;
+        }
+
+        .nav-menu .drop-down ul {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: calc(100% + 30px);
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            padding: 10px 0;
+            background: #fff;
+            box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+            transition: ease all 0.3s;
+        }
+
+        .nav-menu .drop-down:hover>ul {
+            opacity: 1;
+            top: 100%;
+            visibility: visible;
+        }
+
+        .nav-menu .drop-down li {
+            min-width: 180px;
+            position: relative;
+        }
+
+        .nav-menu .drop-down ul a {
+            padding: 10px 20px;
+            font-size: 14px;
+            text-transform: none;
+            color: #21262a;
+            font-weight: 400;
+        }
+
+
+
+        .nav-menu .drop-down>a:after {
+            content: "\ea99";
+            font-family: IcoFont;
+            padding-left: 5px;
+        }
+
+        .nav-menu .drop-down .drop-down ul {
+            top: 0;
+            left: calc(100% - 30px);
+        }
+
+        .nav-menu .drop-down .drop-down:hover>ul {
+            opacity: 1;
+            top: 0;
+            left: 100%;
+        }
+
+        .nav-menu .drop-down .drop-down>a {
+            padding-right: 35px;
+        }
+
+        .nav-menu .drop-down .drop-down>a:after {
+            content: "\eaa0";
+            font-family: IcoFont;
+            position: absolute;
+            right: 15px;
+        }
+
+        @media (max-width: 1366px) {
+            .nav-menu .drop-down .drop-down ul {
+                left: -90%;
+            }
+
+            .nav-menu .drop-down .drop-down:hover>ul {
+                left: -100%;
+            }
+
+            .nav-menu .drop-down .drop-down>a:after {
+                content: "\ea9d";
+            }
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav-toggle {
+            position: fixed;
+            right: 15px;
+            top: 20px;
+            z-index: 9998;
+            border: 0;
+            background: none;
+            font-size: 24px;
+            transition: all 0.4s;
+            outline: none !important;
+            line-height: 1;
+            cursor: pointer;
+            text-align: right;
+        }
+
+        .mobile-nav-toggle i {
+            color: #384046;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 55px;
+            right: 15px;
+            bottom: 15px;
+            left: 15px;
+            z-index: 9999;
+            overflow-y: auto;
+            background: #fff;
+            transition: ease-in-out 0.2s;
+            opacity: 0;
+            visibility: hidden;
+            border-radius: 10px;
+            padding: 10px 0;
+        }
+
+        .mobile-nav * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .mobile-nav a {
+            display: block;
+            position: relative;
+            color: #384046;
+            padding: 10px 20px;
+            font-weight: 500;
+            outline: none;
+        }
+
+        .mobile-nav a:hover,
+        .mobile-nav .active>a,
+        .mobile-nav li:hover>a {
+            color: #fa023c;
+            text-decoration: none;
+        }
+
+        .mobile-nav .drop-down>a:after {
+            content: "\ea99";
+            font-family: IcoFont;
+            padding-left: 10px;
+            position: absolute;
+            right: 15px;
+        }
+
+        .mobile-nav .active.drop-down>a:after {
+            content: "\eaa1";
+        }
+
+        .mobile-nav .drop-down>a {
+            padding-right: 35px;
+        }
+
+        .mobile-nav .drop-down ul {
+            display: none;
+            overflow: hidden;
+        }
+
+        .mobile-nav .drop-down li {
+            padding-left: 20px;
+        }
+
+        .mobile-nav-overly {
+            width: 100%;
+            height: 100%;
+            z-index: 9997;
+            top: 0;
+            left: 0;
+            position: fixed;
+            background: rgba(33, 38, 42, 0.6);
+            overflow: hidden;
+            display: none;
+            transition: ease-in-out 0.2s;
+        }
+
+        .mobile-nav-active {
+            overflow: hidden;
+        }
+
+        .mobile-nav-active .mobile-nav {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav-active .mobile-nav-toggle i {
+            color: #fff;
+        }
+    </style>
 
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
@@ -35,408 +259,366 @@
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
-        <header class="topbar">
-            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
-                <!-- ============================================================== -->
-                <!-- Logo -->
-                <!-- ============================================================== -->
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
-                        <!-- Logo icon --><b>
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Dark Logo icon -->
-                            <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
-                            <!-- Light Logo icon -->
-                            <img src="../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
-                        </b>
-                        <!--End Logo icon -->
-                        <!-- Logo text --><span>
-                            <!-- dark Logo text -->
-                            <img src="../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
-                            <!-- Light Logo text -->
-                            <img src="../assets/images/logo-light-text.png" class="light-logo" alt="homepage" /></span>
-                    </a>
+        
+        <!-- ======= Header ======= -->
+        <header id="header" class="fixed-top d-flex align-items-center">
+            <div class="container d-flex align-items-center">
+                <div class="logo mr-auto">
+                    <h1>
+                        <!-- <img src="assets/img/Icon.png" style="margin-top: -10px;"> -->
+                        <img src="../assets/img/Icon.png" style="margin-top: -15px;" alt="">
+                        <a href="index.html"><img src="assets/img/Elektra_Logo.png" style="margin-top: -10px;"
+                                alt=""></a>
+                    </h1>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Logo -->
-                <!-- ============================================================== -->
-                <div class="navbar-collapse">
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav mr-auto">
-                        <!-- This is  -->
-                        <li class="nav-item hidden-sm-up"> <a class="nav-link nav-toggler waves-effect waves-light"
-                                href="javascript:void(0)"><i class="ti-menu"></i></a></li>
-                        <!-- ============================================================== -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item search-box"> <a class="nav-link waves-effect waves-dark"
-                                href="javascript:void(0)"><i class="fa fa-search"></i></a>
-                            <form class="app-search">
-                                <input type="text" class="form-control" placeholder="Search &amp; enter"> <a
-                                    class="srh-btn"><i class="fa fa-times"></i></a>
-                            </form>
-                        </li>
+
+                <!--NAVBAR-->
+
+                <nav class="nav-menu d-none d-lg-block ml-auto">
+                    <ul>
+                        <li class="active"><a href="../index.html">Home</a></li>
+                        <li><a href="../index.html">About Us</a></li>
+                        <li><a href="../index.html">Cases</a></li>
+                        <li><a href="../index.html">Articles</a></li>
+                        <li><a href="html/dashboard_main.html">DashBoard</a></li>
+                        <li style=" font-weight: 100;
+                font-size: 10px;
+                display: inline-block;
+                padding: 1px 1px 1px 1px;
+                border-radius: 50px;
+                transition: 0.5s;
+                background: #ddd;
+                border-style: none;
+            "><a href="form.html">Doctor</a></li>&nbsp;&nbsp;
+                        <li style=" font-weight: 100;
+                font-size: 10px;
+                display: inline-block;
+                padding: 1px 1px 1px 1px;
+                border-radius: 50px;
+                transition: 0.5s;
+                background: #ddd;
+                border-style: none;
+            "><a href="form.html">Patient</a></li>
+
                     </ul>
-                    <ul class="navbar-nav my-lg-0">
-                        <!-- ============================================================== -->
-                        <!-- User profile and search -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href=""
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
-                                    src="../assets/images/users/1.jpg" alt="user" class="img-circle" width="30"></a>
-                        </li>
-                        <!-- ============================================================== -->
-                        <!-- User profile and search -->
-                        <!-- ============================================================== -->
-                    </ul>
-                </div>
-            </nav>
+                </nav>
+
+                <!-- NAVBAR -->
+            </div>
         </header>
+
+        <!-- End Header -->
         <!-- ============================================================== -->
         <!-- End Topbar header -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-        <aside class="left-sidebar">
-            <div class="d-flex no-block nav-text-box align-items-center">
-                <span><img src="../assets/images/logo-icon.png" alt="elegant admin template"></span>
-                <a class="waves-effect waves-dark ml-auto hidden-sm-down" href="javascript:void(0)"><i
-                        class="ti-menu"></i></a>
-                <a class="nav-toggler waves-effect waves-dark ml-auto hidden-sm-up" href="javascript:void(0)"><i
-                        class="ti-menu ti-close"></i></a>
-            </div>
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <li> <a class="waves-effect waves-dark" href="index.html" aria-expanded="false"><i
-                                    class="fa fa-tachometer"></i><span class="hide-menu">Welcome, John</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="pages-profile.html" aria-expanded="false"><i
-                                    class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="table-basic.html" aria-expanded="false"><i
-                                    class="fa fa-table"></i><span class="hide-menu"></span>Diseases</a></li>
-                        <li> <a class="waves-effect waves-dark" href="icon-fontawesome.html" aria-expanded="false"><i
-                                    class="fa fa-smile-o"></i><span class="hide-menu"></span>Appointments</a></li>
-                        <li> <a class="waves-effect waves-dark" href="map-google.html" aria-expanded="false"><i
-                                    class="fa fa-globe"></i><span class="hide-menu"></span>Doctor</a></li>
-                        <li> <a class="waves-effect waves-dark" href="pages-blank.html" aria-expanded="false"><i
-                                    class="fa fa-bookmark-o"></i><span class="hide-menu"></span>Prescripton</a></li>
 
-                        <a href="https://wrappixel.com/templates/elegant-admin/"
-                            class="btn waves-effect waves-light btn-success hidden-md-down">See Full Report</a>
-            </div>
-            </ul>
-            </nav>
-            <!-- End Sidebar navigation -->
-    </div>
-    <!-- End Sidebar scroll-->
-    </aside>
-    <!-- ============================================================== -->
-    <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- Page wrapper  -->
-    <!-- ============================================================== -->
-    <div class="page-wrapper">
         <!-- ============================================================== -->
-        <!-- Container fluid  -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-        <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
             <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
+            <!-- Container fluid  -->
             <!-- ============================================================== -->
-            <div class="row page-titles">
-                <div class="col-md-5 align-self-center">
-                    <h4 class="text-themecolor">Welcome, John</h4>
-                </div>
-                <div class="col-md-7 align-self-center text-right">
-                    <div class="d-flex justify-content-end align-items-center">
-                        <ol class="breadcrumb">
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h4 class="text-themecolor">Welcome, John</h4>
+                    </div>
+                    <div class="col-md-7 align-self-center text-right">
+                        <div class="d-flex justify-content-end align-items-center">
+                            <ol class="breadcrumb">
 
-                            <a href="../Symptoms.html">
-                                <li class="breadcrumb-item active" style="font-size: 1rem;">Check Symptoms</li>
-                            </a>
-                        </ol>
-                        <a class="btn btn-success d-none d-lg-block m-l-15" href="../Appointment.html">Doctor's
-                            Report</a>
+                                <a href="../Symptoms.html">
+                                    <li class="breadcrumb-item active" style="font-size: 1rem;">Check Symptoms</li>
+                                </a>
+                            </ol>
+                            <a class="btn btn-success d-none d-lg-block m-l-15" href="../Appointment.html">Doctor's
+                                Report</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Yearly Sales -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card oh">
+                            <div class="card-body">
+                                <div class="d-flex m-b-30 align-items-center no-block">
+                                    <h5 class="card-title ">Yearly Appointments</h5>
+                                    <div class="ml-auto">
+                                        <ul class="list-inline font-12">
+                                            <li><i class="fa fa-circle text-info"></i>2019 </li>
+                                            <li><i class="fa fa-circle text-primary"></i> 2020</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id="morris-area-chart" style="height: 350px;"></div>
+                            </div>
+                            <div class="card-body bg-light">
+                                <div class="row text-center m-b-20">
+                                    <div class="col-lg-4 col-md-4 m-t-20">
+                                        <h2 class="m-b-0 font-light">20</h2><span class="text-muted">Total</span>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 m-t-20">
+                                        <h2 class="m-b-0 font-light">12</h2><span class="text-muted">2020</span>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 m-t-20">
+                                        <h2 class="m-b-0 font-light">8</h2><span class="text-muted">2019</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Today's Schedule</h5>
+                                <h6 class="card-subtitle">check out your daily schedule</h6>
+                                <div class="steamline m-t-40">
+                                    <div class="sl-item">
+                                        <div class="sl-left bg-success"> <i class="fa fa-user"></i></div>
+                                        <div class="sl-right">
+                                            <div class="font-medium">Meeting today <span class="sl-date"> 5pm</span>
+                                            </div>
+                                            <div class="desc">you can write anything </div>
+                                        </div>
+                                    </div>
+                                    <div class="sl-item">
+                                        <div class="sl-left bg-info"><i class="fa fa-image"></i></div>
+                                        <div class="sl-right">
+                                            <div class="font-medium">Send documents to Dr. Clark</div>
+                                            <div class="desc">Lorem Ipsum is simply </div>
+                                        </div>
+                                    </div>
+                                    <div class="sl-item">
+                                        <div class="sl-left"> <img class="img-circle" alt="user"
+                                                src="../assets/images/users/1.jpg"> </div>
+                                        <div class="sl-right">
+                                            <div class="font-medium">John Doe <span class="sl-date"> 5pm</span></div>
+                                            <div class="desc">Call today with Mr. doe </div>
+                                        </div>
+                                    </div>
+                                    <div class="sl-item">
+                                        <div class="sl-left"> <img class="img-circle" alt="user"
+                                                src="../assets/images/users/2.jpg"> </div>
+                                        <div class="sl-right">
+                                            <div class="font-medium">Go to the Doctor <span class="sl-date">5 minutes
+                                                    ago</span></div>
+                                            <div class="desc">Contrary to popular belief</div>
+                                        </div>
+                                    </div>
+                                    <div class="sl-item">
+                                        <div class="sl-left"> <img class="img-circle" alt="user"
+                                                src="../assets/images/users/3.jpg"> </div>
+                                        <div class="sl-right">
+                                            <div><a href="#">Tiger Sroff</a> <span class="sl-date">5 minutes ago</span>
+                                            </div>
+                                            <div class="desc">Approve CT Scan
+                                                <br><a href="javascript:void(0)"
+                                                    class="btn m-t-10 m-r-5 btn-rounded btn-outline-success">Apporve</a>
+                                                <a href="javascript:void(0)"
+                                                    class="btn m-t-10 btn-rounded btn-outline-danger">Refuse</a> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- News -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <!-- column -->
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div>
+                                        <h5 class="card-title"> Overview</h5>
+                                        <h6 class="card-subtitle">Check the monthly Appointments </h6>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <select class="custom-select b-0">
+                                            <option>January</option>
+                                            <option value="1">February</option>
+                                            <option value="2" selected="">March</option>
+                                            <option value="3">April</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">#</th>
+                                            <th>NAME</th>
+                                            <th>DATE</th>
+                                            <th>PRICE</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center">1</td>
+                                            <td class="txt-oflo">Dr. Clark</td>
+                                            <td class="txt-oflo">April 18, 2019</td>
+                                            <td><span class="text-success">$24</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">2</td>
+                                            <td class="txt-oflo">Dr. Susan</td>
+                                            <td class="txt-oflo">April 19, 2019</td>
+                                            <td><span class="text-info">$1250</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">3</td>
+                                            <td class="txt-oflo">Dr. Ample</td>
+                                            <td class="txt-oflo">April 19, 2020</td>
+                                            <td><span class="text-info">$1250</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">4</td>
+                                            <td class="txt-oflo">Dr. Cassy</td>
+                                            <td class="txt-oflo">April 20, 2020</td>
+                                            <td><span class="text-danger">-$24</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">5</td>
+                                            <td class="txt-oflo">Dr. Hostin</td>
+                                            <td class="txt-oflo">April 21, 2020</td>
+                                            <td><span class="text-success">$24</span></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- To do chat and message -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Feeds</h4>
+                            </div>
+                            <ul class="feeds p-b-20">
+                                <li>
+                                    <div class="bg-info"><i class="fa fa-bell-o"></i></div> You have 4 medications.
+                                    <span class="text-muted">Just Now</span>
+                                </li>
+                                <li>
+                                    <div class="bg-success"><i class="ti-server"></i></div>Talk to Dr. Clark.<span
+                                        class="text-muted">2 Hours ago</span>
+                                </li>
+                                <li>
+                                    <div class="bg-warning"><i class="ti-shopping-cart"></i></div> New pill.<span
+                                        class="text-muted">31 May</span>
+                                </li>
+                                <li>
+                                    <div class="bg-danger"><i class="ti-user"></i></div>Registered to new Doctor.<span
+                                        class="text-muted">30 May</span>
+                                </li>
+                                <li>
+                                    <div class="bg-dark"><i class="fa fa-bell-o"></i></div> New Doctor just arrived.
+                                    <span class="text-muted">27 May</span>
+                                </li>
+                                <li>
+                                    <div class="bg-info"><i class="fa fa-bell-o"></i></div> You have 4 pending
+                                    medications.
+                                    <span class="text-muted">Just Now</span>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Messages (5 New)</h5>
+                                <div class="message-box">
+                                    <div class="message-widget message-scroll">
+                                        <!-- Message -->
+                                        <a href="javascript:void(0)">
+                                            <div class="user-img"> <img src="../assets/images/users/1.jpg" alt="user"
+                                                    class="img-circle"> <span
+                                                    class="profile-status online pull-right"></span> </div>
+                                            <div class="mail-contnet">
+                                                <h5>Dr. Ray</h5> <span class="mail-desc">Lorem Ipsum is simply dummy
+                                                    text of the printing and type setting industry. Lorem Ipsum has
+                                                    been.</span> <span class="time">9:30 AM</span>
+                                            </div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="javascript:void(0)">
+                                            <div class="user-img"> <img src="../assets/images/users/2.jpg" alt="user"
+                                                    class="img-circle"> <span
+                                                    class="profile-status busy pull-right"></span>
+                                            </div>
+                                            <div class="mail-contnet">
+                                                <h5>Dr. Harry</h5> <span class="mail-desc">I was busy the whole day! See
+                                                    you
+                                                    at</span> <span class="time">9:10 AM</span>
+                                            </div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="javascript:void(0)">
+                                            <div class="user-img"> <span class="round">A</span> <span
+                                                    class="profile-status away pull-right"></span> </div>
+                                            <div class="mail-contnet">
+                                                <h5>Mr. Gill</h5> <span class="mail-desc">Simply dummy text of the
+                                                    printing and typesetting industry.</span> <span class="time">9:08
+                                                    AM</span>
+                                            </div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="javascript:void(0)">
+                                            <div class="user-img"> <img src="../assets/images/users/4.jpg" alt="user"
+                                                    class="img-circle"> <span
+                                                    class="profile-status offline pull-right"></span> </div>
+                                            <div class="mail-contnet">
+                                                <h5>Nurse Mary</h5> <span class="mail-desc">Just take the pills!</span>
+                                                <span class="time">9:02 AM</span>
+                                            </div>
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- End Container fluid  -->
             <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Yearly Sales -->
-            <!-- ============================================================== -->
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="card oh">
-                        <div class="card-body">
-                            <div class="d-flex m-b-30 align-items-center no-block">
-                                <h5 class="card-title ">Yearly Appointments</h5>
-                                <div class="ml-auto">
-                                    <ul class="list-inline font-12">
-                                        <li><i class="fa fa-circle text-info"></i>2019 </li>
-                                        <li><i class="fa fa-circle text-primary"></i> 2020</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div id="morris-area-chart" style="height: 350px;"></div>
-                        </div>
-                        <div class="card-body bg-light">
-                            <div class="row text-center m-b-20">
-                                <div class="col-lg-4 col-md-4 m-t-20">
-                                    <h2 class="m-b-0 font-light">20</h2><span class="text-muted">Total</span>
-                                </div>
-                                <div class="col-lg-4 col-md-4 m-t-20">
-                                    <h2 class="m-b-0 font-light">12</h2><span class="text-muted">2020</span>
-                                </div>
-                                <div class="col-lg-4 col-md-4 m-t-20">
-                                    <h2 class="m-b-0 font-light">8</h2><span class="text-muted">2019</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Today's Schedule</h5>
-                            <h6 class="card-subtitle">check out your daily schedule</h6>
-                            <div class="steamline m-t-40">
-                                <div class="sl-item">
-                                    <div class="sl-left bg-success"> <i class="fa fa-user"></i></div>
-                                    <div class="sl-right">
-                                        <div class="font-medium">Meeting today <span class="sl-date"> 5pm</span>
-                                        </div>
-                                        <div class="desc">you can write anything </div>
-                                    </div>
-                                </div>
-                                <div class="sl-item">
-                                    <div class="sl-left bg-info"><i class="fa fa-image"></i></div>
-                                    <div class="sl-right">
-                                        <div class="font-medium">Send documents to Dr. Clark</div>
-                                        <div class="desc">Lorem Ipsum is simply </div>
-                                    </div>
-                                </div>
-                                <div class="sl-item">
-                                    <div class="sl-left"> <img class="img-circle" alt="user"
-                                            src="../assets/images/users/1.jpg"> </div>
-                                    <div class="sl-right">
-                                        <div class="font-medium">John Doe <span class="sl-date"> 5pm</span></div>
-                                        <div class="desc">Call today with Mr. doe </div>
-                                    </div>
-                                </div>
-                                <div class="sl-item">
-                                    <div class="sl-left"> <img class="img-circle" alt="user"
-                                            src="../assets/images/users/2.jpg"> </div>
-                                    <div class="sl-right">
-                                        <div class="font-medium">Go to the Doctor <span class="sl-date">5 minutes
-                                                ago</span></div>
-                                        <div class="desc">Contrary to popular belief</div>
-                                    </div>
-                                </div>
-                                <div class="sl-item">
-                                    <div class="sl-left"> <img class="img-circle" alt="user"
-                                            src="../assets/images/users/3.jpg"> </div>
-                                    <div class="sl-right">
-                                        <div><a href="#">Tiger Sroff</a> <span class="sl-date">5 minutes ago</span>
-                                        </div>
-                                        <div class="desc">Approve CT Scan
-                                            <br><a href="javascript:void(0)"
-                                                class="btn m-t-10 m-r-5 btn-rounded btn-outline-success">Apporve</a>
-                                            <a href="javascript:void(0)"
-                                                class="btn m-t-10 btn-rounded btn-outline-danger">Refuse</a> </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- News -->
-            <!-- ============================================================== -->
-            <div class="row">
-                <!-- column -->
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <div>
-                                    <h5 class="card-title"> Overview</h5>
-                                    <h6 class="card-subtitle">Check the monthly Appointments </h6>
-                                </div>
-                                <div class="ml-auto">
-                                    <select class="custom-select b-0">
-                                        <option>January</option>
-                                        <option value="1">February</option>
-                                        <option value="2" selected="">March</option>
-                                        <option value="3">April</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center">#</th>
-                                        <th>NAME</th>
-                                        <th>DATE</th>
-                                        <th>PRICE</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="text-center">1</td>
-                                        <td class="txt-oflo">Dr. Clark</td>
-                                        <td class="txt-oflo">April 18, 2019</td>
-                                        <td><span class="text-success">$24</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">2</td>
-                                        <td class="txt-oflo">Dr. Susan</td>
-                                        <td class="txt-oflo">April 19, 2019</td>
-                                        <td><span class="text-info">$1250</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">3</td>
-                                        <td class="txt-oflo">Dr. Ample</td>
-                                        <td class="txt-oflo">April 19, 2020</td>
-                                        <td><span class="text-info">$1250</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">4</td>
-                                        <td class="txt-oflo">Dr. Cassy</td>
-                                        <td class="txt-oflo">April 20, 2020</td>
-                                        <td><span class="text-danger">-$24</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">5</td>
-                                        <td class="txt-oflo">Dr. Hostin</td>
-                                        <td class="txt-oflo">April 21, 2020</td>
-                                        <td><span class="text-success">$24</span></td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- To do chat and message -->
-            <!-- ============================================================== -->
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">Feeds</h4>
-                        </div>
-                        <ul class="feeds p-b-20">
-                            <li>
-                                <div class="bg-info"><i class="fa fa-bell-o"></i></div> You have 4 medications.
-                                <span class="text-muted">Just Now</span>
-                            </li>
-                            <li>
-                                <div class="bg-success"><i class="ti-server"></i></div>Talk to Dr. Clark.<span
-                                    class="text-muted">2 Hours ago</span>
-                            </li>
-                            <li>
-                                <div class="bg-warning"><i class="ti-shopping-cart"></i></div> New pill.<span
-                                    class="text-muted">31 May</span>
-                            </li>
-                            <li>
-                                <div class="bg-danger"><i class="ti-user"></i></div>Registered to new Doctor.<span
-                                    class="text-muted">30 May</span>
-                            </li>
-                            <li>
-                                <div class="bg-dark"><i class="fa fa-bell-o"></i></div> New Doctor just arrived.
-                                <span class="text-muted">27 May</span>
-                            </li>
-                            <li>
-                                <div class="bg-info"><i class="fa fa-bell-o"></i></div> You have 4 pending medications.
-                                <span class="text-muted">Just Now</span>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Messages (5 New)</h5>
-                            <div class="message-box">
-                                <div class="message-widget message-scroll">
-                                    <!-- Message -->
-                                    <a href="javascript:void(0)">
-                                        <div class="user-img"> <img src="../assets/images/users/1.jpg" alt="user"
-                                                class="img-circle"> <span
-                                                class="profile-status online pull-right"></span> </div>
-                                        <div class="mail-contnet">
-                                            <h5>Dr. Ray</h5> <span class="mail-desc">Lorem Ipsum is simply dummy
-                                                text of the printing and type setting industry. Lorem Ipsum has
-                                                been.</span> <span class="time">9:30 AM</span>
-                                        </div>
-                                    </a>
-                                    <!-- Message -->
-                                    <a href="javascript:void(0)">
-                                        <div class="user-img"> <img src="../assets/images/users/2.jpg" alt="user"
-                                                class="img-circle"> <span class="profile-status busy pull-right"></span>
-                                        </div>
-                                        <div class="mail-contnet">
-                                            <h5>Dr. Harry</h5> <span class="mail-desc">I was busy the whole day! See you
-                                                at</span> <span class="time">9:10 AM</span>
-                                        </div>
-                                    </a>
-                                    <!-- Message -->
-                                    <a href="javascript:void(0)">
-                                        <div class="user-img"> <span class="round">A</span> <span
-                                                class="profile-status away pull-right"></span> </div>
-                                        <div class="mail-contnet">
-                                            <h5>Mr. Gill</h5> <span class="mail-desc">Simply dummy text of the
-                                                printing and typesetting industry.</span> <span class="time">9:08
-                                                AM</span>
-                                        </div>
-                                    </a>
-                                    <!-- Message -->
-                                    <a href="javascript:void(0)">
-                                        <div class="user-img"> <img src="../assets/images/users/4.jpg" alt="user"
-                                                class="img-circle"> <span
-                                                class="profile-status offline pull-right"></span> </div>
-                                        <div class="mail-contnet">
-                                            <h5>Nurse Mary</h5> <span class="mail-desc">Just take the pills!</span>
-                                            <span class="time">9:02 AM</span>
-                                        </div>
-                                    </a>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <!-- ============================================================== -->
-        <!-- End Container fluid  -->
+        <!-- End Page wrapper  -->
         <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Page wrapper  -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- footer -->
-    <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
 
-    <!-- ============================================================== -->
-    <!-- End footer -->
-    <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- End footer -->
+        <!-- ============================================================== -->
     </div>
     <!-- ============================================================== -->
     <!-- End Wrapper -->
