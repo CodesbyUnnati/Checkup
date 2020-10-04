@@ -37,5 +37,5 @@
 <h1>Deployment</h1>✔️GITHUB
 
 <h1>Created and Deployed by</h1>
-  <b><a href="https://github.com/CodesbyUnnati">Unnati Mishra🙎</a> &<a href="https://github.com/devangi2000">Devangi Purkhayastha🙎</a></b>
+  <b><a href="https://github.com/CodesbyUnnati">Unnati Mishra🙎</a> & <a href="https://github.com/devangi2000">Devangi Purkhayastha🙎</a></b>
   <br><br>
