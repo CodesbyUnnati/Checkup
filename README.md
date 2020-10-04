@@ -3,9 +3,8 @@
 <br>
 
 
-<b> <a href=""> CHECK LIVE </a></b>
+<b> <a href="https://codesbyunnati.github.io/CoSave/index.html"> CHECK LIVE </a></b>
 <br>
-<h3>Check out the <a href="">YouTube</a> video</h3>
 
 <img src="#" border="0">
 <br>
@@ -22,6 +21,7 @@
 <li>JavaScript</li>
 <li>JQuery</li>
 <li>Node JS</li>
+<li>Mongo  DB</li>
 
 
 <h1>Editor</h1>
