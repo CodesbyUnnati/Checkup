@@ -18,7 +18,7 @@
 
 <h1>Features</h1>
 
-<li>Hassle free in-person meetings with professional Doctors.</li>
+<li>Hassle free in-person meetings with professional Doctors via live chat.</li>
 <li>Disease Prediction</li>
 
 <h1>Tech Stack Used</h1>
